@@ -1,5 +1,6 @@
 // import dependencies and initialize express
 const express = require("express");
+const cors = require("cors");
 const path = require("path");
 const bodyParser = require("body-parser");
 
@@ -8,13 +9,14 @@ const healthRoutes = require("./routes/health-route");
 const swaggerRoutes = require("./routes/swagger-route");
 
 const app = express();
+app.use(cors());
 
 // enable parsing of http request body
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 // routes and api calls
-app.use("/bff, bffRoutes");
+app.use("/", bffRoutes);
 app.use("/health", healthRoutes);
 app.use("/swagger", swaggerRoutes);
 
